@@ -23,7 +23,7 @@ enum BlattAusgabe {
 
     static func titel(_ zs: [Zeichnung], model: AppModel) -> String {
         if zs.count == 1, let z = zs.first { return BlattPDF.seitentitel(z) }
-        return "\(model.project?.name ?? "Kev CAD") – Zeichnungen"
+        return "\(model.project?.name ?? "SK-CAD") – Zeichnungen"
     }
 
     /// „Als PDF sichern …“: Sichern-Dialog am Fenster, Vorgabe output/ im Projektordner.

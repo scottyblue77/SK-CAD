@@ -249,9 +249,9 @@ struct BauplanInspektor: View {
 
     private func quelle(_ q: String) -> String {
         switch q {
-        case "kevin": return "Kevin"
+        case "kevin": return AppInfo.nutzerName
         case "agent": return "Agent"
-        default: return "Kev CAD"
+        default: return "SK-CAD"
         }
     }
 }

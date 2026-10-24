@@ -25,7 +25,7 @@ extension AppController: DruckerActions {
         case .frage(let f):
             // Der Agent bittet um den Dialog. Es geschieht nichts, bis Kevin dort klickt.
             send(AckOutMessage(replyTo: f.id, ok: true, message: "Dialog „Drucken …“ ist offen"))
-            log(.info, "Claude möchte drucken" + (f.grund.map { ": \($0)" } ?? "") + " – wartet auf Kevins Bestätigung")
+            log(.info, "Claude möchte drucken" + (f.grund.map { ": \($0)" } ?? "") + " – wartet auf die Bestätigung von \(AppInfo.nutzerName)")
             var d = DruckDialogZustand(platten: DruckDialogZustand.auswahl(f.platten, vorschau: model.druck.vorschau),
                                        weg: f.weg, frage: f)
             d.filamentVorbelegen(model.druck.vorschau)
@@ -213,7 +213,7 @@ extension AppController: DruckerActions {
         let msg = DruckAuftragNachricht(id: id, platten: d.platten, weg: d.weg, bestaetigt: true,
                                         optionen: d.weg == .b ? d.optionen : nil, auftrag: d.auftrag,
                                         filament: d.filamentWahl(model.druck.vorschau))
-        log(.info, "Kevin bestätigt: \(d.weg == .a ? "in Bambu Studio öffnen" : "direkt drucken"), Platten "
+        log(.info, "\(AppInfo.nutzerName) bestätigt: \(d.weg == .a ? "in Bambu Studio öffnen" : "direkt drucken"), Platten "
             + (d.platten.isEmpty ? "alle" : d.platten.map(String.init).joined(separator: ", ")))
         request(msg, timeout: Self.druckerTimeout) { [weak self] result in
             guard let self else { return }
@@ -261,7 +261,7 @@ extension AppController: DruckerActions {
         if !bestaetigt, let a = d.auftrag, helloReceived {
             request(DruckerSteuerNachricht(id: nextRequestID(), aktion: .verwerfen, auftrag: a),
                     timeout: Self.druckerTimeout) { _ in }
-            if d.frage != nil { log(.info, "Kevin hat den Druckwunsch von Claude verworfen") }
+            if d.frage != nil { log(.info, "\(AppInfo.nutzerName) hat den Druckwunsch von Claude verworfen") }
         }
     }
 

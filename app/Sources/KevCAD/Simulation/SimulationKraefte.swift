@@ -451,7 +451,7 @@ struct LagerAnsicht: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Lager gelten für alle Lastfälle oder nur für ausgewählte. Ohne ausdrückliches Lager leitet Kev CAD "
+            Text("Lager gelten für alle Lastfälle oder nur für ausgewählte. Ohne ausdrückliches Lager leitet SK-CAD "
                  + "sie aus den Kontakten ab (Boden, Kulisse, befestigt, tragende Nachbarn).")
                 .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
             Picker("Art", selection: $store.lagerArt) {

@@ -134,7 +134,7 @@ struct BauplanRegelBlatt: View {
             }
             TextField("Grund (z. B. „erst das Gestell ausrichten“)", text: $grund)
                 .textFieldStyle(.roundedBorder)
-            Text("Kev CAD rechnet die Montagefolge danach neu und prüft sie in der Simulation.")
+            Text("SK-CAD rechnet die Montagefolge danach neu und prüft sie in der Simulation.")
                 .font(.callout).foregroundStyle(.secondary)
             HStack {
                 Spacer()

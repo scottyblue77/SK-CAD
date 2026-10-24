@@ -45,11 +45,14 @@ REPO="$(pwd)"
 MODE="${1:-}"
 
 APP_NAME="Kev CAD"
+# SK-CAD: sichtbarer Name; die App-Datei heißt weiter „Kev CAD.app“ (Pfade im Kernel, Prozessname)
+DISPLAY_NAME="SK-CAD"
 BUNDLE_ID="de.upvis.kevcad"
 PORT=47823
 if [ "$MODE" = "--test" ]; then
   SUFFIX="${2:-}"
   APP_NAME="Kev CAD Test${SUFFIX:+ $SUFFIX}"
+  DISPLAY_NAME="SK-CAD Test${SUFFIX:+ $SUFFIX}"
   BUNDLE_ID="de.upvis.kevcad.test${SUFFIX:+.$SUFFIX}"
   # je Testvariante ein eigener Port, damit mehrere nebeneinander laufen können
   PORT=$((47824 + $(printf '%s' "$SUFFIX" | cksum | cut -d' ' -f1) % 100 * (${#SUFFIX} > 0)))
@@ -202,7 +205,7 @@ mkdir -p "$BUILD"
 LOG="$BUILD/xcodebuild.log"
 if ! xcodebuild -project app/KevCAD.xcodeproj -scheme KevCAD -configuration Release \
   -destination "platform=macOS,arch=arm64" -derivedDataPath "$BUILD/DerivedData" \
-  KEVCAD_APP_NAME="$APP_NAME" KEVCAD_BUNDLE_ID="$BUNDLE_ID" KEVCAD_REPO="$APP_REPO" KEVCAD_PORT="$PORT" \
+  KEVCAD_APP_NAME="$APP_NAME" KEVCAD_DISPLAY_NAME="$DISPLAY_NAME" KEVCAD_BUNDLE_ID="$BUNDLE_ID" KEVCAD_REPO="$APP_REPO" KEVCAD_PORT="$PORT" \
   KEVCAD_BUILD="$BUILD_NUMBER" KEVCAD_COMMIT="$COMMIT" \
   build -quiet > "$LOG" 2>&1; then
   grep -E "error:|\*\* BUILD FAILED" "$LOG" | grep -v "^Failed frontend" | head -30
@@ -215,6 +218,12 @@ SRC="$BUILD/DerivedData/Build/Products/Release/$APP_NAME.app"
 rm -rf "$BUILD/$APP_NAME.app"
 cp -R "$SRC" "$BUILD/$APP_NAME.app"
 APP="$BUILD/$APP_NAME.app"
+# SK-CAD: Finder, Dock und Menü zeigen den lokalisierten Namen; Info.plist behält „Kev CAD“ als Dateinamen-Gegenstück.
+for lp in de en; do
+  mkdir -p "$APP/Contents/Resources/$lp.lproj"
+  printf '"CFBundleDisplayName" = "%s";\n"CFBundleName" = "%s";\n' "$DISPLAY_NAME" "$DISPLAY_NAME" \
+    > "$APP/Contents/Resources/$lp.lproj/InfoPlist.strings"
+done
 codesign --force --deep --sign - --timestamp=none "$APP" >/dev/null 2>&1
 # Build-Kopien bei Launch Services abmelden, sonst startet `open -b de.upvis.kevcad` womöglich eine davon statt der
 # installierten App.

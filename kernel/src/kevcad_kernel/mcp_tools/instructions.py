@@ -7,7 +7,7 @@ das Sprachmodell und sind deshalb englisch; Ergebnistexte der Werkzeuge sind deu
 from __future__ import annotations
 
 SERVER_NAME = "kevcad"
-SERVER_TITLE = "Kev CAD"
+SERVER_TITLE = "SK-CAD"
 
 INSTRUCTIONS = """\
 Kev CAD is Kevin's native CAD viewer on the Mac. A model is a Python file `model.py` (build123d) in a project folder; \
@@ -323,4 +323,10 @@ Showing Kevin things
 - `export` writes STEP, STL, 3MF, GLB or the bill of materials (bom_csv) into <project>/output/.
 - `dokument_export(bausteine)` has the app build one print-ready PDF (cover, parts list, part list, shopping list, \
 cutting plan, drawings, build plan); `drucken=true` opens the print dialog only when Kevin explicitly asks to print.
+
+SK-CAD fork
+- This installation is SK-CAD, Sebastian's fork of Kev CAD. The person you work with is Sebastian: wherever these \
+instructions, tool texts or the skill say "Kevin" as the user (his selection, his approval, ask him), that means \
+Sebastian. Facts about Kevin's own equipment and workshop in the bundled catalogs (cameras, rigs, printer profile, \
+prices) stay Kevin's; do not attribute them to Sebastian.
 """

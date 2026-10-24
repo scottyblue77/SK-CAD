@@ -50,7 +50,7 @@ def _netz(stl: Path) -> tuple[np.ndarray, np.ndarray]:
     return pts, T[gut]
 
 
-def schreibe_3mf(ziel: Path, platten: list[list[PlattenObjekt]], titel: str = "Kev CAD",
+def schreibe_3mf(ziel: Path, platten: list[list[PlattenObjekt]], titel: str = "SK-CAD",
                  platten_namen: list[str] | None = None) -> dict[str, Any]:
     """Schreibt das 3MF; liefert {"pfad", "objekte", "platten", "namen"}. ``platten_namen``: Namen der Platten in
     Bambu Studio (sonst „Platte 1“ …)."""

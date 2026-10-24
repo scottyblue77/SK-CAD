@@ -1,3 +1,19 @@
+# SK-CAD
+
+SK-CAD ist Sebastians Fork von [Kev CAD](https://github.com/UPVIS/kev-cad) (Kevin Schwed, UPVIS, MIT). Sichtbar heißt die
+App SK-CAD und spricht Sebastian an; Code-Bezeichner, Pfade, Bundle-ID (`de.upvis.kevcad`) und der MCP-Name `kevcad`
+bleiben wie im Original, damit sich neue Stände von Kevin weiter übernehmen lassen:
+
+```bash
+git fetch upstream && git merge upstream/main   # upstream = https://github.com/UPVIS/kev-cad.git
+./build.sh
+```
+
+Name und Anrede stehen an einer Stelle: `KEVCAD_DISPLAY_NAME` und `KEVCAD_USER_NAME` in `app/project.yml`,
+`DISPLAY_NAME` in `build.sh` und `KEVCAD_NUTZER` (Umgebung des Kernels, Vorgabe „Sebastian“).
+
+Die folgende Beschreibung stammt aus Kev CAD.
+
 # Kev CAD
 
 Kev CAD ist ein nativer CAD-Viewer für den Mac, den ein KI-Agent über MCP bedient. Der Agent schreibt ein

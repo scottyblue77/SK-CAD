@@ -14,6 +14,9 @@ packages:
 settings:
   base:
     KEVCAD_APP_NAME: Kev CAD
+    # SK-CAD: sichtbarer Name (Menü, Dock, Finder) und Anrede des Nutzers; Dateiname und Kennungen bleiben wie bei Kev CAD
+    KEVCAD_DISPLAY_NAME: SK-CAD
+    KEVCAD_USER_NAME: Sebastian
     KEVCAD_BUNDLE_ID: de.upvis.kevcad
     KEVCAD_REPO: ""
     KEVCAD_PORT: "47823"
@@ -36,7 +39,8 @@ targets:
       path: Generated/Info.plist
       properties:
         CFBundleDisplayName: $(PRODUCT_NAME)
-        CFBundleName: $(PRODUCT_NAME)
+        CFBundleName: $(KEVCAD_DISPLAY_NAME)
+        LSHasLocalizedDisplayName: true
         CFBundleIconFile: AppIcon
         CFBundleShortVersionString: "0.1"
         CFBundleVersion: $(KEVCAD_BUILD)
@@ -45,7 +49,8 @@ targets:
         LSApplicationCategoryType: public.app-category.graphics-design
         LSMinimumSystemVersion: "15.0"
         NSHighResolutionCapable: true
-        NSHumanReadableCopyright: "© 2026 Kevin Schwed"
+        NSHumanReadableCopyright: "SK-CAD, auf Basis von Kev CAD © 2026 Kevin Schwed (MIT)"
+        KevCADNutzer: $(KEVCAD_USER_NAME)
         KevCADRepo: $(KEVCAD_REPO)
         KevCADPort: $(KEVCAD_PORT)
     settings:

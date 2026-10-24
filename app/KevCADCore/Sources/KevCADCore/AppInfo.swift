@@ -41,6 +41,15 @@ public enum AppInfo {
         repoDirectory?.appendingPathComponent("kernel/.venv/bin/kevcad-kernel")
     }
 
+    /// Name, mit dem die Oberfläche den Nutzer nennt (SK-CAD; Info.plist-Schlüssel `KevCADNutzer`, gesetzt über
+    /// `KEVCAD_USER_NAME` in app/project.yml). Ohne Eintrag (etwa in Tests) gilt „Sebastian“.
+    public static var nutzerName: String {
+        if let s = Bundle.main.object(forInfoDictionaryKey: "KevCADNutzer") as? String, !s.isEmpty, !s.hasPrefix("$(") {
+            return s
+        }
+        return "Sebastian"
+    }
+
     /// Standardordner für Projekte.
     public static var projectsDirectory: URL {
         FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Documents/Kev CAD", isDirectory: true)

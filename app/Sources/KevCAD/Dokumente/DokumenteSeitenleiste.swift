@@ -133,8 +133,8 @@ struct DokumenteSeitenleiste: View {
                 Label("Noch keine Zeichnungen", systemImage: "doc.text.magnifyingglass")
                     .font(.headline)
                 Text(model.parts.isEmpty
-                     ? "Erst model.py rechnen, dann legt Kev CAD die Zeichnungen an."
-                     : "Kev CAD legt für jedes gefertigte Teil ein bemaßtes Blatt an und eines für den Zusammenbau mit Stückliste.")
+                     ? "Erst model.py rechnen, dann legt SK-CAD die Zeichnungen an."
+                     : "SK-CAD legt für jedes gefertigte Teil ein bemaßtes Blatt an und eines für den Zusammenbau mit Stückliste.")
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)

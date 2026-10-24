@@ -161,7 +161,7 @@ struct GebautDialog: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("„\(model.project?.name ?? "Projekt")“ als gebaut buchen?")
                     .font(.title3.weight(.semibold))
-                Text("Kev CAD bucht ab, was der Zuschnitt aus dem Bestand dieses Projekts verplant, und legt die neuen "
+                Text("SK-CAD bucht ab, was der Zuschnitt aus dem Bestand dieses Projekts verplant, und legt die neuen "
                     + "Reste mit Kennung an."
                     + (model.bestandZustand.bestand?.fuehrtFilament == true
                         ? " Das Filament der noch nicht gedruckt gebuchten Platten geht von den Spulen ab." : "")

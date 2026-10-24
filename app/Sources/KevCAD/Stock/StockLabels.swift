@@ -54,7 +54,7 @@ extension CatalogLevel {
 
     var detail: String {
         switch self {
-        case .mitgeliefert: return "Mit Kev CAD geliefert, nur ansehen"
+        case .mitgeliefert: return "Mit SK-CAD geliefert, nur ansehen"
         case .eigen: return "Dein eigener Katalog, gilt in allen Projekten"
         case .projekt: return "Nur in diesem Projekt (katalog.json im Projektordner)"
         }

@@ -59,7 +59,7 @@ struct WelcomeView: View {
                 .interpolation(.high)
                 .frame(width: 112, height: 112)
                 .shadow(color: .black.opacity(0.15), radius: 6, y: 3)
-            Text("Kev CAD")
+            Text("SK-CAD")
                 .font(.system(size: 32, weight: .semibold))
                 .padding(.top, 10)
             HStack(spacing: 6) {

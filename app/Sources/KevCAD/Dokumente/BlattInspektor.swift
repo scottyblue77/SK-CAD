@@ -53,7 +53,7 @@ struct BlattInspektor: View {
                 }
                 .fixedSize()
             }
-            .help(z.blatt.autoFormat ? "Kev CAD wählt das Format, bis du eines setzt" : "von dir gesetzt")
+            .help(z.blatt.autoFormat ? "SK-CAD wählt das Format, bis du eines setzt" : "von dir gesetzt")
             LabeledContent("Maßstab") {
                 Menu(z.blatt.massstab) {
                     ForEach(ZeichnungText.massstaebe, id: \.self) { m in
@@ -63,11 +63,11 @@ struct BlattInspektor: View {
                 }
                 .fixedSize()
             }
-            .help(z.blatt.autoMassstab ? "Kev CAD wählt den größten Maßstab der ISO-Reihe, der passt"
+            .help(z.blatt.autoMassstab ? "SK-CAD wählt den größten Maßstab der ISO-Reihe, der passt"
                   : "von dir gesetzt (ISO 5455)")
             if z.blatt.autoFormat || z.blatt.autoMassstab {
                 Text([z.blatt.autoFormat ? "Format" : nil, z.blatt.autoMassstab ? "Maßstab" : nil].compactMap { $0 }
-                        .joined(separator: " und ") + " wählt Kev CAD automatisch.")
+                        .joined(separator: " und ") + " wählt SK-CAD automatisch.")
                     .font(.caption).foregroundStyle(.secondary)
             }
             Toggle("Ansichten automatisch", isOn: Binding(
@@ -314,7 +314,7 @@ private struct SchriftfeldAbschnitt: View {
         } header: {
             Text("Schriftfeld")
         } footer: {
-            Text("Mit ⏎ übernehmen. Was du hier setzt, überschreibt Kev CAD nicht mehr.")
+            Text("Mit ⏎ übernehmen. Was du hier setzt, überschreibt SK-CAD nicht mehr.")
                 .font(.caption).foregroundStyle(.secondary)
         }
         .onChange(of: z.stand) { _, _ in werte = [:] }

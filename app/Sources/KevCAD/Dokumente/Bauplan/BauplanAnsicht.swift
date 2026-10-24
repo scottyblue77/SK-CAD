@@ -99,7 +99,7 @@ struct BauplanAnsicht: View {
                 Label("Noch kein Bauplan", systemImage: "hammer")
             } description: {
                 Text(store.meldung?.fehler == true ? store.meldung!.text
-                     : "Kev CAD baut die Anleitung aus dem Modell: Material, Zuschnitt, Bearbeiten, Drucken und Montage.")
+                     : "SK-CAD baut die Anleitung aus dem Modell: Material, Zuschnitt, Bearbeiten, Drucken und Montage.")
             } actions: {
                 Button("Bauplan erzeugen") { actions?.bauplanAnfordern() }
                     .buttonStyle(.borderedProminent)

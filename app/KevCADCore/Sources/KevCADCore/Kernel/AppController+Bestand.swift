@@ -143,7 +143,7 @@ extension AppController: BestandActions {
         let run = model.druck.vorschau?.run
         let was = platten.isEmpty ? "alle Platten" : "Platte " + platten.map(String.init).joined(separator: ", ")
         let msg = GedrucktRequestMessage(id: nextRequestID(), platten: platten, spule: spule, run: run,
-                                         grund: "Kevin: \(was) gedruckt (App)")
+                                         grund: "\(AppInfo.nutzerName): \(was) gedruckt (App)")
         request(msg, timeout: Self.bestandTimeout) { [weak self] result in
             guard let self else { return }
             switch result {

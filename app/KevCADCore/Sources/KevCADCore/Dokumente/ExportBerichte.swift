@@ -320,7 +320,7 @@ public enum ExportBauer {
             l.text(f.0.uppercased(), x: fx, y: fy + 5, .mittel(6.5), farbe: ExportStil.grau, laufweite: 0.2)
             l.text(f.1, x: fx, y: fy + 10, .normal(9), farbe: ExportStil.tinte, maxBreite: fw - 4)
         }
-        l.text("Erstellt mit Kev CAD", x: x1, y: h - 6, .normal(7), farbe: ExportStil.grauHell, .rechts)
+        l.text("Erstellt mit SK-CAD", x: x1, y: h - 6, .normal(7), farbe: ExportStil.grauHell, .rechts)
     }
 
     // MARK: Stückliste

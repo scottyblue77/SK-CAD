@@ -181,7 +181,7 @@ struct BerichteAnsicht: View {
 
     private func sichern() {
         Task { @MainActor in
-            guard let url = await ExportDialogFenster.speicherOrt(model: model, name: "\(model.project?.name ?? "Kev CAD") – \(bericht.titel)")
+            guard let url = await ExportDialogFenster.speicherOrt(model: model, name: "\(model.project?.name ?? "SK-CAD") – \(bericht.titel)")
             else { return }
             do {
                 _ = try await model.exportActions?.exportPDF(vorlage, nach: url)

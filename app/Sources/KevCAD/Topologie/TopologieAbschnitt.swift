@@ -118,7 +118,7 @@ struct TopologieStandAnsicht: View {
                           systemImage: "arrow.triangle.branch")
                 }
                 .disabled(s.imModell || actions == nil)
-                .help("Neue Variante anlegen und in model.py topologie.optimieren(…) eintragen; Kevin entscheidet, "
+                .help("Neue Variante anlegen und in model.py topologie.optimieren(…) eintragen; du entscheidest, "
                       + "welche Variante bleibt")
                 Spacer()
             }

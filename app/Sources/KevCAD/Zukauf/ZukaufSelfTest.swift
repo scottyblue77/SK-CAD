@@ -77,7 +77,7 @@ enum ZukaufSelfTest {
         if let wagen = model.parts.first(where: { $0.zukauf != nil }) {
             check(wagen.zukauf?.isSimplified == true, "\(wagen.id): vereinfacht (\(wagen.zukauf?.title ?? "?"))")
             check(session.controller?.scene.simplifiedParts.contains(wagen.id) == true, "Ersatzkörper halbtransparent")
-            await shot("viewport-vereinfacht", window: model.project?.name ?? "Kev CAD")
+            await shot("viewport-vereinfacht", window: model.project?.name ?? "SK-CAD")
             model.actions?.select([wagen.id])
         }
         let line = model.bom?.lines.first { $0.art == "zukaufteil" }
@@ -85,7 +85,7 @@ enum ZukaufSelfTest {
               && line?.zukauf?.url != nil && line?.zukauf?.vereinfacht == true,
               "Stücklistenzeile Zukaufteil: \(line?.benennung ?? "fehlt"), \(line?.zukauf?.title ?? "-"), "
               + "\(line?.preisJe.map(KevFormat.euro) ?? "-"), \(line?.zukauf?.url?.host ?? "kein Link")")
-        await shot("projekt-vereinfacht", window: model.project?.name ?? "Kev CAD")
+        await shot("projekt-vereinfacht", window: model.project?.name ?? "SK-CAD")
 
         // 2. Lagerkatalog: Zukaufteile als eigene Gruppe, Vorschlag von Claude, Freigabe wie mit „Freigeben“
         session.showCatalog(focus: .item(wagenID))
@@ -152,7 +152,7 @@ enum ZukaufSelfTest {
         check(await wait(8) { model.downloadOffer?.fileName == file.lastPathComponent }, "Rückfrage zu \(file.lastPathComponent)")
         check(model.downloadOffer?.size == Int64(content.count), "erst gemeldet, als die Datei fertig war")
         session.dismissZukaufWindow()
-        await shot("rueckfrage", window: model.project?.name ?? "Kev CAD")
+        await shot("rueckfrage", window: model.project?.name ?? "SK-CAD")
         if let teil = model.downloadOffer?.candidates.first { actions.acceptDownload(for: teil) }
         check(await wait(30) { model.zukaufStatus(for: draft.id)?.zustand == .importiert },
               "importiert: \(model.zukaufStatus(for: draft.id)?.text ?? "-")")
@@ -167,7 +167,7 @@ enum ZukaufSelfTest {
         check(session.controller?.scene.simplifiedParts.isEmpty == true, "kein Ersatzkörper mehr")
         check(await wait(5) { model.bom?.lines.first { $0.art == "zukaufteil" }?.zukauf?.vereinfacht == false },
               "Stückliste: CAD-Quelle \(model.bom?.lines.first { $0.art == "zukaufteil" }?.zukauf?.cadTitle ?? "?")")
-        await shot("projekt-hersteller", window: model.project?.name ?? "Kev CAD")
+        await shot("projekt-hersteller", window: model.project?.name ?? "SK-CAD")
         finish(lines, passed)
     }
 

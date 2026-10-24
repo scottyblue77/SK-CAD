@@ -159,7 +159,7 @@ public final class ExportDokument {
         // Fuß: Kev CAD, Seite x / y
         let fy = h - ExportRand.unten
         l.linie(CGPoint(x: x0, y: fy - 4.8), CGPoint(x: x1, y: fy - 4.8), breite: 0.12, farbe: ExportStil.linie)
-        l.text("Erstellt mit Kev CAD  ·  \(kopf.autor)", x: x0, y: fy - 1, .normal(7), farbe: ExportStil.grauHell)
+        l.text("Erstellt mit SK-CAD  ·  \(kopf.autor)", x: x0, y: fy - 1, .normal(7), farbe: ExportStil.grauHell)
         l.text("Seite \(info.nummer) / \(info.anzahl)", x: x1, y: fy - 1, .mittel(7.5), farbe: ExportStil.grau, .rechts)
     }
 
@@ -203,7 +203,7 @@ public final class ExportDokument {
         var box = CGRect(origin: .zero, size: seiten.first?.punkte ?? ExportSeitenformat().punkte)
         let meta: [CFString: Any] = [
             kCGPDFContextTitle: "\(kopf.projekt) – Dokumente", kCGPDFContextAuthor: kopf.autor,
-            kCGPDFContextCreator: "Kev CAD", kCGPDFContextSubject: "Stückliste, Zeichnungen und Bauplan",
+            kCGPDFContextCreator: "SK-CAD", kCGPDFContextSubject: "Stückliste, Zeichnungen und Bauplan",
         ]
         guard let ctx = CGContext(tmp as CFURL, mediaBox: &box, meta as CFDictionary) else {
             throw ExportFehler.pdf("PDF-Kontext für \(url.path) nicht anlegbar")
@@ -258,6 +258,6 @@ public enum Dokumentautor {
             return name
         }
         let voll = NSFullUserName().trimmingCharacters(in: .whitespaces)
-        return voll.isEmpty ? "Kev CAD" : voll
+        return voll.isEmpty ? "SK-CAD" : voll
     }
 }

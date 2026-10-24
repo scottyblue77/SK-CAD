@@ -415,7 +415,7 @@ struct SpuleSheet: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(vorher.map { "Spule \($0.kennung) ändern" } ?? "Spule aufnehmen")
                         .font(.title3.weight(.semibold))
-                    Text("Filament, das du für dieses Projekt hast. Die Kennung vergibt Kev CAD.")
+                    Text("Filament, das du für dieses Projekt hast. Die Kennung vergibt SK-CAD.")
                         .foregroundStyle(.secondary)
                 }
             }

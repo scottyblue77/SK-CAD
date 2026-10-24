@@ -42,7 +42,7 @@ struct DruckerEinstellungen: View {
                     SecureField("Zugangscode", text: $zugangscode,
                                 prompt: Text(drucker.zugangGespeichert ? "gespeichert (leer lassen = unverändert)" : "am Drucker: Einstellungen → WLAN"))
                     Text("Seriennummer und Zugangscode liegen nur im Schlüsselbund von macOS, nie in einer Datei. Damit "
-                         + "der Kernel sie ohne Rückfrage lesen kann, erlaubt Kev CAD dort dem Programm „security“ den "
+                         + "der Kernel sie ohne Rückfrage lesen kann, erlaubt SK-CAD dort dem Programm „security“ den "
                          + "Zugriff; dadurch kann jedes Programm unter deinem Benutzer den Zugangscode ohne Rückfrage "
                          + "lesen. Bei Weg A erlaubt der Code nur, den Status zu lesen.")
                         .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
@@ -60,7 +60,7 @@ struct DruckerEinstellungen: View {
                 }
                 Section {
                     Toggle("Status lesen (Fortschritt, Temperaturen, Fehler)", isOn: $statusLesen)
-                    Text("Kev CAD verbindet sich dann im LAN nur lesend mit dem Drucker. Lesen ist auch im Cloud-Modus "
+                    Text("SK-CAD verbindet sich dann im LAN nur lesend mit dem Drucker. Lesen ist auch im Cloud-Modus "
                          + "erlaubt; ob die zusätzliche Verbindung ganz ohne Nebenwirkung bleibt, ist nicht belegt. "
                          + "Deshalb ist es anfangs aus.")
                         .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)

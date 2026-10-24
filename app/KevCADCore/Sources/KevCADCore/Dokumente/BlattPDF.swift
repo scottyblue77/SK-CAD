@@ -12,7 +12,7 @@ public enum BlattPDF {
         public var ersteller: String
         public var thema: String?
 
-        public init(titel: String, autor: String = Dokumentautor.standard, ersteller: String = "Kev CAD", thema: String? = nil) {
+        public init(titel: String, autor: String = Dokumentautor.standard, ersteller: String = "SK-CAD", thema: String? = nil) {
             self.titel = titel
             self.autor = autor
             self.ersteller = ersteller

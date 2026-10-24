@@ -69,7 +69,7 @@ extension AppController: ExportActions {
         if let v = model.versionen.stand?.aktuelleVersion {
             version = "V\(v.nr)" + (v.meilenstein.map { " · \($0.titel)" } ?? "")
         }
-        return ExportKopf(projekt: model.project?.name ?? "Kev CAD", version: version)
+        return ExportKopf(projekt: model.project?.name ?? "SK-CAD", version: version)
     }
 
     func exportQuellen(_ v: ExportVorlage) async -> ExportQuellen {
@@ -253,7 +253,7 @@ extension AppController: ExportActions {
         var e = try await exportPDF(v, nach: url)
         guard let pdf = PDFDocument(url: url) else { throw ExportFehler.pdf("Druck: PDF nicht lesbar") }
         let fenster = NSApp.keyWindow ?? NSApp.mainWindow ?? NSApp.windows.first { $0.isVisible && $0.canBecomeMain }
-        let titel = model.project?.name ?? "Kev CAD"
+        let titel = model.project?.name ?? "SK-CAD"
         ExportDrucker.drucke(pdf, titel: titel, fenster: fenster) { [weak self] n in
             try? FileManager.default.removeItem(at: url)
             self?.log(.info, "Druck: \(n) Aufträge abgeschickt")
@@ -286,7 +286,7 @@ extension AppController: ExportActions {
                     e = try await exportPDF(vorlage, nach: ziel)
                     if a.drucken, let pdf = PDFDocument(url: ziel) {
                         let fenster = NSApp.keyWindow ?? NSApp.mainWindow
-                        ExportDrucker.drucke(pdf, titel: model.project?.name ?? "Kev CAD", fenster: fenster)
+                        ExportDrucker.drucke(pdf, titel: model.project?.name ?? "SK-CAD", fenster: fenster)
                         let n = ExportDrucker.auftraege(pdf).count
                         e.gedruckt = n > 1 ? "Druckdialog geöffnet (\(n) Aufträge, je Format einer)" : "Druckdialog geöffnet"
                         if let h = ExportDrucker.hinweis(ExportDrucker.auftraege(pdf)) { e.hinweise.append(h) }

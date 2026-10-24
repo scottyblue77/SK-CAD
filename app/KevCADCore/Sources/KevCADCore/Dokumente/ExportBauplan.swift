@@ -208,7 +208,7 @@ public enum ExportBauplanSeiten {
         }
         var marken: [String] = []
         if s.fest { marken.append("fest") }
-        if s.quelle == "kevin" { marken.append("von Kevin") } else if s.quelle == "agent" { marken.append("überarbeitet") }
+        if s.quelle == "kevin" { marken.append("von \(AppInfo.nutzerName)") } else if s.quelle == "agent" { marken.append("überarbeitet") }
         if s.verwaist { marken.append("Teile fehlen im Modell") }
         if s.anzahl > 1 {
             let box = CGRect(x: r.maxX - 21, y: r.minY, width: 21, height: g)

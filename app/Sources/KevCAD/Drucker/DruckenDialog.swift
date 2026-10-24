@@ -195,7 +195,7 @@ struct DruckenDialog: View {
             .labelsHidden()
             .disabled(gesperrt(d))
             if d.weg == .a {
-                Text("Kev CAD slict die Platten fertig und öffnet sie in Bambu Studio. Dort „Platte drucken“ (bzw. "
+                Text("SK-CAD slict die Platten fertig und öffnet sie in Bambu Studio. Dort „Platte drucken“ (bzw. "
                      + "„Alle drucken“) und „Senden“ klicken. Bambu Handy bleibt wie gewohnt.")
                     .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
             } else {

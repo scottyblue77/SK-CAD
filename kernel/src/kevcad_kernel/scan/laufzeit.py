@@ -81,7 +81,7 @@ class ScanRuntimeMixin:
         self._log(f"[scan] Scan empfangen: {text} ({eintrag.get('ordner')})")
         self._scan_liste_senden(neu=eintrag.get("id"))  # App: Band „Neuer Scan empfangen“
         if self._scan_variante == ablage.PRODUKTION and os.environ.get("KEVCAD_SCAN_MITTEILUNG", "1") != "0":
-            skript = f'display notification "{_as(text)}" with title "Kev CAD" subtitle "Scan empfangen"'
+            skript = f'display notification "{_as(text)}" with title "SK-CAD" subtitle "Scan empfangen"'
             try:
                 subprocess.run(["osascript", "-e", skript], capture_output=True, timeout=10)
             except (OSError, subprocess.SubprocessError) as exc:

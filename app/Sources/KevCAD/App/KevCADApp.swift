@@ -29,7 +29,7 @@ struct KevCADApp: App {
     }
 
     var body: some Scene {
-        Window("Willkommen bei Kev CAD", id: WindowID.welcome) {
+        Window("Willkommen bei SK-CAD", id: WindowID.welcome) {
             WelcomeView(recents: session.recents)
                 .environmentObject(session)
         }
@@ -58,7 +58,7 @@ struct KevCADApp: App {
             SimulationCommands(model: session.model)  // Bereich Simulation (⌘4): Lastfälle, Kräfte, Lager, Rechnen
         }
 
-        Window("Kev CAD", id: WindowID.project) {
+        Window("SK-CAD", id: WindowID.project) {
             ProjectWindow(model: session.model)
                 .environmentObject(session)
         }

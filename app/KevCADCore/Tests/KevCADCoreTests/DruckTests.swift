@@ -397,7 +397,7 @@ final class DruckTests: XCTestCase {
         XCTAssertEqual(t.zeilen[0].zellen["fuellung"]?.text, "25 %")
         XCTAssertEqual(t.zeilen[0].zellen["fuellung"]?.unter, "Gyroid")
         XCTAssertEqual(t.zeilen[0].zellen["zeit"]?.text, "1 h 30 min")
-        XCTAssertTrue(t.zeilen[0].zellen["teil"]?.unter?.hasPrefix("Von Kevin: Wände") == true)
+        XCTAssertTrue(t.zeilen[0].zellen["teil"]?.unter?.hasPrefix("Von \(AppInfo.nutzerName): Wände") == true)
         XCTAssertEqual(ExportBausteinWahl(art: .druck).wirksameSpalten.reduce(0) { $0 + $1.mindestbreite },
                        172, accuracy: 0.01)  // passt auf A4 hoch (178 mm)
         // Deckblatt mit Druckzeit und Platten

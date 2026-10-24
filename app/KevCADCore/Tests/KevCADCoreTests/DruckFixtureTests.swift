@@ -213,7 +213,7 @@ final class DruckFixtureTests: XCTestCase {
         XCTAssertEqual(g1.abweichungMaterial, -0.02)
         XCTAssertEqual(g1.kurzname, "Halter")
         XCTAssertEqual(v.projekt?.platte, "Textured PEI Plate")
-        XCTAssertEqual(DruckFormat.vorgaben(g1.vorgaben), ["Von Kevin: Wände, Zweck", "Vom Agenten: Füllung"])
+        XCTAssertEqual(DruckFormat.vorgaben(g1.vorgaben), ["Von \(AppInfo.nutzerName): Wände, Zweck", "Vom Agenten: Füllung"])
         XCTAssertEqual(DruckQuelle.agent.titel, "vom Agenten")
     }
 

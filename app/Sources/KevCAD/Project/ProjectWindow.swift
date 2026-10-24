@@ -37,7 +37,7 @@ struct ProjectWindow: View {
         .focusedSceneObject(state)
         .focusedSceneObject(versionen)
         .focusedSceneObject(dokumente)
-        .navigationTitle(model.project?.name ?? "Kev CAD")
+        .navigationTitle(model.project?.name ?? "SK-CAD")
         .navigationSubtitle(untertitel)
         .modifier(DruckerDialoge(model: model))  // Phase 8: „Drucken …“ und Drucker-Einstellungen
         .modifier(RenderDialoge(model: model))  // Phase 7: „Rendern …“

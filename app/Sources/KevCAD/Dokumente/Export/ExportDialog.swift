@@ -380,7 +380,7 @@ struct ExportDialog: View {
 
     private func sichern() {
         Task { @MainActor in
-            guard let url = await ExportDialogFenster.speicherOrt(model: model, name: "\(model.project?.name ?? "Kev CAD") – Dokumente")
+            guard let url = await ExportDialogFenster.speicherOrt(model: model, name: "\(model.project?.name ?? "SK-CAD") – Dokumente")
             else { return }
             aktiv = true
             fehler = nil

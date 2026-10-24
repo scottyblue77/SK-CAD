@@ -430,7 +430,7 @@ struct CatalogWindow: View {
                 d.material = "edelstahl-1.4301"
                 d.norm = "ISO 1127"
                 d.preis = "14,50"
-                d.preisQuelle = "Kevin"
+                d.preisQuelle = AppInfo.nutzerName
                 d.tags = "geländer, edelstahl"
                 form = CatalogFormRequest(mode: .new, draft: .item(d), ebene: .eigen)
             }

@@ -459,7 +459,7 @@ public enum ZeichnungText {
 
     public static func quelle(_ q: String) -> String {
         switch q {
-        case "kevin": return "von Kevin"
+        case "kevin": return "von \(AppInfo.nutzerName)"
         case "agent": return "von Claude"
         default: return "automatisch"
         }

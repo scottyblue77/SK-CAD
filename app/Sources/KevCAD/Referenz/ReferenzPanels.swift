@@ -81,7 +81,7 @@ struct ReferenzInspectorSection: View {
             if store.referenzen.isEmpty {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Keine Referenz")
-                    Text("Handyvideo oder Fotos des echten Gegenstands auf das Fenster ziehen: Kev CAD legt ein "
+                    Text("Handyvideo oder Fotos des echten Gegenstands auf das Fenster ziehen: SK-CAD legt ein "
                         + "Referenznetz in die Szene und misst die Maße von model.py.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -186,7 +186,7 @@ private struct ReferenzZeile: View {
             if let e = ergebnis {
                 Text(e.masse.map { m in
                     "\(m.name): \(m.start.map { KevFormat.number($0, digits: 1) } ?? "–") → \(KevFormat.number(m.gerundet, digits: 1)) mm"
-                }.joined(separator: "\n") + "\n\nDer Vorgabewert in param(…) wird ersetzt, danach rechnet Kev CAD neu.")
+                }.joined(separator: "\n") + "\n\nDer Vorgabewert in param(…) wird ersetzt, danach rechnet SK-CAD neu.")
             }
         }
     }

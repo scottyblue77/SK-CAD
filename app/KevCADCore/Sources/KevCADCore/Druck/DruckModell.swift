@@ -25,7 +25,7 @@ public enum DruckStand: String, Equatable, Sendable, CaseIterable {
     public var beschreibung: String {
         switch self {
         case .schaetzung: return "Schnelle Schätzung des Kernels nach dem Lauf"
-        case .slicer: return "Gerechnet von Bambu Studio mit Kevins Drucker- und Filamentprofil"
+        case .slicer: return "Gerechnet von Bambu Studio mit deinem Drucker- und Filamentprofil"
         case .gemischt: return "Ein Teil ist schon von Bambu Studio gerechnet, der Rest geschätzt"
         }
     }
@@ -456,7 +456,7 @@ public struct DruckEinstellungen: Equatable, Sendable {
 public enum DruckQuelle: String, Equatable, Sendable {
     case kevin, agent
 
-    public var titel: String { self == .kevin ? "von Kevin" : "vom Agenten" }
+    public var titel: String { self == .kevin ? "von \(AppInfo.nutzerName)" : "vom Agenten" }
 }
 
 /// Eine Gruppe gleicher Druckteile (gleicher Formschlüssel, Material und Einstellungen) mit Empfehlung.

@@ -46,7 +46,9 @@ HAUPT_NAME = "Hauptstand"
 AUTOMATISCH = ("lauf", "uebernahme", "sicherung")  # werden nach 30 Tagen ausgedünnt
 DICHT_ABSTAND_S = 5 * 60  # Versionen mit höchstens diesem Abstand bilden eine Folge
 DICHT_MIN = 3  # ab so vielen Versionen fasst die Leiste eine Folge zusammen
-WER_TEXT = {"kevin": "Kevin", "agent": "Agent", "kevcad": "Kev CAD", "unbekannt": "Auto-Lauf"}
+# SK-CAD: Anzeigename des Nutzers für Einträge mit wer="kevin" (Kennung bleibt wegen Kompatibilität mit Kev CAD).
+NUTZER = os.environ.get("KEVCAD_NUTZER", "").strip() or "Sebastian"
+WER_TEXT = {"kevin": NUTZER, "agent": "Agent", "kevcad": "SK-CAD", "unbekannt": "Auto-Lauf"}
 QUELLE_TEXT = {"lauf": "Lauf", "wiederherstellen": "Wiederhergestellt", "sicherung": "Sicherung",
                "uebernahme": "Vorgeschichte", "meilenstein": "Meilenstein", "variante": "Variante"}
 _TRAILER = re.compile(r"^Kevcad-([A-Za-z]+):\s?(.*)$")

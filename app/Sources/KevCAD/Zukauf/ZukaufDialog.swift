@@ -150,7 +150,7 @@ struct ZukaufDialog: View {
     private var noFetchNote: some View {
         HintBox(symbol: "info.circle", tint: .secondary) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Kev CAD lädt keine Shop-Seiten.").fontWeight(.medium)
+                Text("SK-CAD lädt keine Shop-Seiten.").fontWeight(.medium)
                 Text("Trag die Angaben im nächsten Schritt selbst ein oder bitte Claude, die Seite zu lesen: "
                     + "sein Vorschlag erscheint im Lagerkatalog und lässt sich hier prüfen und freigeben.")
                     .foregroundStyle(.secondary)
@@ -174,7 +174,7 @@ struct ZukaufDialog: View {
 
     /// Auftrag für Claude (MCP-Werkzeuge laut PLAN-PHASE3-ZUKAUF.md).
     static func claudeTask(_ input: String) -> String {
-        "Lege in Kev CAD ein Zukaufteil an: \(input.trimmingCharacters(in: .whitespacesAndNewlines))\n"
+        "Lege in SK-CAD ein Zukaufteil an: \(input.trimmingCharacters(in: .whitespacesAndNewlines))\n"
             + "Lies die Produktseite (Hersteller, Herstellernummer, EAN, Preis mit Datum und brutto/netto, Maße, "
             + "Gewicht, Bild) und schlage das Teil mit zukauf_anlegen vor. Such danach mit cad_suchen das Hersteller-CAD."
     }
@@ -528,7 +528,7 @@ struct ZukaufDialog: View {
         let dir = model.watchedDownloads.map { KevFormat.abbreviatedPath($0.path) } ?? "Downloads"
         return (status.cadLinks.isEmpty ? "Lade die CAD-Datei beim Hersteller herunter. " :
             "„CAD suchen“ öffnet die Seite des Herstellers im Browser; lade dort die STEP-Datei herunter. ")
-            + "Kev CAD beobachtet \(dir) und fragt nach, sobald eine neue Datei (\(types)) ankommt."
+            + "SK-CAD beobachtet \(dir) und fragt nach, sobald eine neue Datei (\(types)) ankommt."
     }
 
     // MARK: Fuß

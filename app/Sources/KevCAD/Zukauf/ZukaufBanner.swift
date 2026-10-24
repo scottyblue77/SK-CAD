@@ -82,7 +82,7 @@ struct ZukaufBanner: View {
                 }
                 .help("Im Finder zeigen")
                 Button("Nein") { model.zukaufActions?.declineDownload() }
-                    .help("Diese Datei nicht übernehmen; Kev CAD wartet weiter")
+                    .help("Diese Datei nicht übernehmen; SK-CAD wartet weiter")
                 Button("Übernehmen") { model.zukaufActions?.acceptDownload(for: teil) }
                     .buttonStyle(.borderedProminent)
                     .disabled(teil.isEmpty)
@@ -113,7 +113,7 @@ struct ZukaufBanner: View {
                         .font(.headline)
                         .lineLimit(1)
                         .truncationMode(.tail)
-                    Text(first.text ?? "Lade die STEP-Datei beim Hersteller herunter; Kev CAD beobachtet "
+                    Text(first.text ?? "Lade die STEP-Datei beim Hersteller herunter; SK-CAD beobachtet "
                         + "\(model.watchedDownloads.map { KevFormat.abbreviatedPath($0.path) } ?? "Downloads") und fragt dann nach.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -134,7 +134,7 @@ struct ZukaufBanner: View {
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.borderless)
-                .help("Band ausblenden; Kev CAD beobachtet Downloads weiter")
+                .help("Band ausblenden; SK-CAD beobachtet Downloads weiter")
             }
         }
         .frame(maxWidth: 860)

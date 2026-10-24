@@ -48,7 +48,7 @@ def eigentuemer() -> str:
             name = pwd.getpwuid(os.getuid()).pw_gecos.split(",")[0].strip()
         except (ImportError, KeyError):
             name = ""
-    return name or "Kev CAD"
+    return name or "SK-CAD"
 
 
 class BlattFehler(ValueError):
@@ -73,7 +73,7 @@ def neu(blatt_id: str, titel: str, art: str, teile: list[str], *, fmt: str | Non
     return normalisiere({
         "version": VERSION, "id": blatt_id, "titel": titel, "format": fmt or "A4", "ausrichtung": ausrichtung or "quer",
         "massstab": "1:1", "inhalt": {"art": art, "teile": list(teile)},
-        "schriftfeld": {"benennung": titel, "datum": _dt.date.today().isoformat(), "gezeichnet": "Kev CAD",
+        "schriftfeld": {"benennung": titel, "datum": _dt.date.today().isoformat(), "gezeichnet": "SK-CAD",
                         "allgemeintoleranz": "ISO 2768-m"},
         "ansichten": [], "masse": [], "notizen": [], "tabellen": [],
         "unterdrueckt": [],
@@ -108,7 +108,7 @@ def normalisiere(blatt: dict[str, Any]) -> dict[str, Any]:
               "freigegeben"):
         sf.setdefault(k, None)
     if sf.get("gezeichnet") is None:
-        sf["gezeichnet"] = "Kev CAD"
+        sf["gezeichnet"] = "SK-CAD"
     if sf.get("allgemeintoleranz") is None:
         sf["allgemeintoleranz"] = "ISO 2768-m"
     if sf.get("eigentuemer") is None:

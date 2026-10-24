@@ -445,7 +445,7 @@ public struct BestandBuchung: Identifiable, Equatable, Sendable {
 
     public var vonTitel: String? {
         switch von {
-        case "kevin": return "Kevin"
+        case "kevin": return AppInfo.nutzerName
         case "agent": return "Claude"
         case let v?: return v
         case nil: return nil
