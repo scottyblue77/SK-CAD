@@ -914,6 +914,10 @@ def register_tools(mcp: MCPServer, service: KernelService, board: SessionBoard |
     from .drucker_tools import register_drucker_tools
 
     register_drucker_tools(t, svc, tool, {"read_only": READ_ONLY})
+    # SK-CAD: STL laden und über OctoPrint drucken (stl_octoprint_tools.py)
+    from .stl_octoprint_tools import register_stl_octoprint_tools
+
+    register_stl_octoprint_tools(t, svc, tool, {"read_only": READ_ONLY})
     # Druckvorschau: Filament, Zeit, Platten, Kosten, Empfehlungen, 3MF (druckvorschau_tools.py, DRUCKVORSCHAU.md)
     from .druckvorschau_tools import register_druckvorschau_tools
 

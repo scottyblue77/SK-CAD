@@ -70,6 +70,13 @@ TOOL_NAMES: tuple[str, ...] = (
     # Phase 8: Drucken
     "drucker_status",
     "drucken",
+    # SK-CAD: STL und OctoPrint
+    "stl_laden",
+    "stl_liste",
+    "octoprint_status",
+    "octoprint_einrichten",
+    "octoprint_drucken",
+    "octoprint_starten",
     # Phase 6: Zeichnungen
     "zeichnungen",
     "zeichnung_erstellen",

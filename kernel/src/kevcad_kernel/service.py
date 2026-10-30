@@ -554,6 +554,32 @@ class KernelService(Protocol):
         Prozess) und als Referenz ``<projekt>/referenzen/<name>/`` (art "scan") anlegen. {"ok", "name", "ordner",
         "scan", "zustand", "einstellung", "befehl", "referenz"? und "bericht"? (mit warten_s)}"""
 
+    # SK-CAD: STL laden (stl/laufzeit.py) und über OctoPrint drucken (octoprint/laufzeit.py)
+    def stl_laden(self, pfad: str, name: str | None = None, auf_bett: bool = True) -> dict[str, Any]:
+        """STL nach ``<projekt>/stl/<name>.stl`` kopieren und als Referenz (art "stl") im Viewer zeigen. {"ok", "name",
+        "stl", "referenz", "dreiecke", "punkte", "masz_mm", "min_mm", "max_mm", "flaeche_mm2", "volumen_cm3",
+        "dicht", "offene_kanten", "mehrfache_kanten", "innen_nach_aussen", "hinweise"}"""
+
+    def stl_liste(self) -> dict[str, Any]:
+        """STL des offenen Projekts. {"ok", "stl": [{"name", "stl", "masz_mm", "dreiecke", "volumen_cm3", "dicht",
+        "erstellt"}]}"""
+
+    def octoprint_status(self) -> dict[str, Any]:
+        """Nur lesend. {"ok", "einstellungen", "slicer_gefunden", "octoprint", "drucker" {"verbunden", "zustand",
+        "flags", "duese", "bett"}, "auftrag" {"zustand", "datei", "fortschritt_prozent", "vergangen_s", "rest_s"}}"""
+
+    def octoprint_einrichten(self, url: str | None = None, slicer: str | None = None,
+                             profil: str | None = None) -> dict[str, Any]:
+        """Einstellungen setzen bzw. prüfen (nie der API-Schlüssel). {"ok", "einstellungen", "schluessel_da",
+        "slicer_gefunden", "hinweise"}"""
+
+    def octoprint_drucken(self, datei: str, starten: bool = False, profil: str | None = None) -> dict[str, Any]:
+        """STL slicen (PrusaSlicer) oder G-Code nehmen, hochladen und auswählen; ``starten`` druckt sofort. {"ok",
+        "gestartet", "octoprint_datei", "gcode", "meldung", "drucker", "quelle", "druckzeit"?, "filament_g"?}"""
+
+    def octoprint_starten(self, octoprint_datei: str) -> dict[str, Any]:
+        """Hochgeladene Datei drucken. {"ok", "gestartet", "octoprint_datei", "meldung"}"""
+
     # Anzeige in der App, was der Agent gerade tut
     def set_agent_activity(self, text: str | None) -> None: ...
 

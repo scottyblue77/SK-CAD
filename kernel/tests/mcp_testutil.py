@@ -67,6 +67,9 @@ EXPECTED_TOOLS |= {"scans", "scan_importieren"}
 EXPECTED_TOOLS |= {"topologie_optimieren", "topologie_ergebnis", "topologie_uebernehmen"}
 # Bereich „Simulation“ (PLAN-SIMULATION.md)
 EXPECTED_TOOLS |= {"simulation_liste", "simulation_aendern", "simulation_rechnen"}
+# SK-CAD: STL und OctoPrint
+EXPECTED_TOOLS |= {"stl_laden", "stl_liste", "octoprint_status", "octoprint_einrichten", "octoprint_drucken",
+                   "octoprint_starten"}
 
 
 def free_port() -> int:

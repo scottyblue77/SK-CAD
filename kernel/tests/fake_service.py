@@ -736,6 +736,40 @@ class FakeService:
                 "meldung": "Der Dialog „Drucken …“ ist in Kev CAD offen. Es geschieht nichts, bis Kevin dort "
                            "bestätigt; den Stand zeigt drucker_status."}
 
+    # SK-CAD: STL und OctoPrint ------------------------------------------------------------------------------------
+
+    def stl_laden(self, pfad: str, name: str | None = None, auf_bett: bool = True) -> dict[str, Any]:
+        self._record("stl_laden", pfad, name, auf_bett)
+        return {"ok": True, "name": name or "Teil", "stl": "/tmp/p/stl/Teil.stl", "dreiecke": 12, "punkte": 8,
+                "masz_mm": [10.0, 20.0, 30.0], "volumen_cm3": 6.0, "dicht": True, "hinweise": []}
+
+    def stl_liste(self) -> dict[str, Any]:
+        self._record("stl_liste")
+        return {"ok": True, "stl": [{"name": "Teil", "stl": "/tmp/p/stl/Teil.stl", "masz_mm": [10.0, 20.0, 30.0],
+                                     "dreiecke": 12, "volumen_cm3": 6.0, "dicht": True}]}
+
+    def octoprint_status(self) -> dict[str, Any]:
+        self._record("octoprint_status")
+        return {"ok": True, "octoprint": "1.10.3", "einstellungen": {"url": "http://192.168.1.233"},
+                "drucker": {"verbunden": True, "zustand": "Operational", "duese": {"ist": 24.0, "soll": 0},
+                            "bett": {"ist": 23.0, "soll": 0}},
+                "auftrag": {"zustand": "Operational", "datei": None}}
+
+    def octoprint_einrichten(self, url: str | None = None, slicer: str | None = None,
+                             profil: str | None = None) -> dict[str, Any]:
+        self._record("octoprint_einrichten", url, slicer, profil)
+        return {"ok": True, "einstellungen": {"url": url or "http://192.168.1.233", "profil": profil},
+                "schluessel_da": False, "slicer_gefunden": None, "hinweise": ["Schlüssel fehlt"]}
+
+    def octoprint_drucken(self, datei: str, starten: bool = False, profil: str | None = None) -> dict[str, Any]:
+        self._record("octoprint_drucken", datei, starten, profil)
+        return {"ok": True, "gestartet": starten, "octoprint_datei": "sk-cad/Teil.gcode", "gcode": "/tmp/Teil.gcode",
+                "meldung": "Gestartet." if starten else "Hochgeladen, nicht gestartet.", "druckzeit": "1h 2m"}
+
+    def octoprint_starten(self, octoprint_datei: str) -> dict[str, Any]:
+        self._record("octoprint_starten", octoprint_datei)
+        return {"ok": True, "gestartet": True, "octoprint_datei": octoprint_datei, "meldung": "Gestartet."}
+
     # Druckvorschau (DRUCKVORSCHAU.md) ----------------------------------------------------------------------------------
 
     def druckvorschau(self, detail: bool = False) -> dict[str, Any]:

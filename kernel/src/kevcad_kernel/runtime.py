@@ -41,6 +41,8 @@ from kevcad_kernel.bom import inventory_text
 from kevcad_kernel.catalog import ALLE_ARTEN, STANGENWARE, ZUKAUF_ARTEN, Catalog, CatalogError, own_dir
 from kevcad_kernel.druck.laufzeit import DruckRuntime
 from kevcad_kernel.drucker.laufzeit import DruckerRuntimeMixin  # Phase 8: Drucken auf dem P1P
+from kevcad_kernel.octoprint.laufzeit import OctoPrintRuntimeMixin  # SK-CAD: Drucken über OctoPrint
+from kevcad_kernel.stl.laufzeit import StlRuntimeMixin  # SK-CAD: STL laden
 from kevcad_kernel.druck.vorschau_laufzeit import DruckvorschauRuntime
 from kevcad_kernel.druck.gedruckt import GedrucktAnbindung
 from kevcad_kernel.freigabe import FreigabeAnbindung
@@ -115,7 +117,7 @@ class KernelRuntime(BestandAnbindung, AnimationRuntimeMixin, CameraRuntime, Druc
                     ZeichnungRuntimeMixin, VersionenRuntimeMixin, DokumentExportDienst, DruckvorschauRuntime,
                     DruckerRuntimeMixin, FreigabeAnbindung, GedrucktAnbindung, ReferenzRuntimeMixin,
                     StatikRuntime, DynamikRuntime, RenderRuntime, FestkoerperRuntime, ScanRuntimeMixin,
-                    TopologieRuntime, SimulationRuntime):
+                    TopologieRuntime, SimulationRuntime, StlRuntimeMixin, OctoPrintRuntimeMixin):
     """Fassade für die MCP-Werkzeuge (KernelService) und Gegenstelle der App. Bestand je Projekt: bestand/anbindung.py.
     Phase 5: Animation (``AnimationRuntimeMixin``) und Kameras (``CameraRuntime``); Druckprüfung (``DruckRuntime``);
     Prüfung: pruefen, ansichten (``PruefDienst``, pruefung/dienst.py); Phase 6: Bauplan (``BauplanDienst``) und
