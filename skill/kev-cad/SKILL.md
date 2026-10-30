@@ -904,6 +904,24 @@ sie dort; Kevin klickt in Bambu Studio „Platte drucken“ und „Senden“, di
 - Starten, Pausieren oder Abbrechen am Drucker gibt es für den Agenten nicht. Weg B (direkt im LAN) ist gesperrt,
   solange der Drucker nicht im LAN-only-Modus mit Developer Mode läuft.
 
+## STL laden und über OctoPrint drucken (SK-CAD)
+
+Sebastians Drucker hängt an einem OctoPi (OctoPrint, Standard `http://192.168.1.233`). Einrichtung siehe
+`OCTOPRINT.md` im Repo.
+
+- `stl_laden(pfad)`: fremde STL (Thingiverse, Cults3D, eigener Export) ins offene Projekt holen. Kopie unter
+  `<projekt>/stl/<name>.stl`, im Viewer halb durchsichtig als Referenz (auf dem Bett: Mitte XY, Unterseite z = 0).
+  Das Netz ist kein bearbeitbares CAD; Maße, Volumen und „dicht“ stehen im Ergebnis. `stl_liste` zeigt alle.
+- `octoprint_status`: nur lesend (Verbindung, Temperaturen, laufender Druck). Vor jedem Druck aufrufen.
+- `octoprint_drucken(datei)`: STL mit PrusaSlicer und dem eingestellten Profil slicen (G-Code nach
+  `<projekt>/output/`), hochladen und auswählen; Druckzeit und Filament stehen im Ergebnis. Ohne `starten` wird
+  **nicht** gedruckt. Fertiger G-Code geht ohne Slicen.
+- `starten=true` bzw. `octoprint_starten` nur, wenn Sebastian in diesem Gespräch ausdrücklich „jetzt drucken“ sagt.
+  Nie von dir aus, nie zum Testen. Vorher Druckzeit und Filament nennen.
+- Fehlt Profil, Slicer oder API-Schlüssel, sagt `octoprint_einrichten` was zu tun ist. Den API-Schlüssel trägt
+  Sebastian selbst in den Schlüsselbund ein; frag nie danach und gib ihn nie weiter.
+- Eigene Modelle aus model.py: erst `export(["stl"])`, dann die exportierte Datei an `octoprint_drucken` geben.
+
 ## Bauplan
 
 Kev CAD erzeugt aus dem Modell eine Bauanleitung zum Ausdrucken (Kevin, 22.10.2026: „was muss wann gemacht werden,
